@@ -12,6 +12,7 @@ import { LocationComponent } from './screen/location/location.component';
 import { DepartamentComponent } from './screen/departament/departament.component';
 import { EmployeeComponent } from './screen/employee/employee.component';
 import { JobhistoryComponent } from './screen/jobhistory/jobhistory.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { JobhistoryComponent } from './screen/jobhistory/jobhistory.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
