@@ -13,6 +13,8 @@ import { DepartamentComponent } from './screen/departament/departament.component
 import { EmployeeComponent } from './screen/employee/employee.component';
 import { JobhistoryComponent } from './screen/jobhistory/jobhistory.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './screen/header/header/header.component';
+import { MaterialModule } from './shared/material/material.module';
 
 @NgModule({
   declarations: [
@@ -24,13 +26,15 @@ import { HttpClientModule } from '@angular/common/http';
     LocationComponent,
     DepartamentComponent,
     EmployeeComponent,
-    JobhistoryComponent
+    JobhistoryComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
