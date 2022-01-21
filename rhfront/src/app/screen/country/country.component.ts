@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 export interface PeriodicElement {
   name: string;
@@ -27,16 +28,25 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './country.component.html',
   styleUrls: ['./country.component.css']
 })
-export class CountryComponent implements OnInit {
+export class CountryComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource(ELEMENT_DATA);  
 
+  @ViewChild(MatPaginator) 'paginator': MatPaginator;
+  @ViewChild(MatSort) 'sort': MatSort;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
   
-
   constructor() { }
-
+ 
   ngOnInit(): void {
+  }
+  applyFilter(value: any): any {
+    this.dataSource.filter = value();
   }
 }
 
