@@ -15,13 +15,18 @@ export class JobService {
     return this.http.get<any>('http://localhost:8081/job/findById/${id}');
   }
   createJobs(form:any):Observable<any>{
-    console.log("entro al servicio"+form)
     return this.http.post<any>('http://localhost:8081/job/createJobs',form);
   }
   updateJobs(form:any):Observable<any>{
-    return this.http.put<any>('http://localhost:8081/job/updateJobs/${jobs.id}', form);
+    console.log("entro al servicio");
+    return this.http.put<any>('http://localhost:8081/job/updateJobs',form);
   }
-  deleteById(id: string):Observable<any>{
-    return this.http.delete('http://localhost:8081/job/deleteById/${id}');
+  deleteById(form:any):Observable<any>{
+    console.log("entro al servicio");
+    return this.http.post<any>('http://localhost:8081/job/deleteById',form);
+  }
+
+  createOrUpdate(form:any):Observable<any>{
+    return this.http.post<any>('http://localhost:8081/job/createOrUpdate',form);
   }
 }

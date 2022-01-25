@@ -21,11 +21,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule} from '@angular/material/button';
 import { MatMenuModule} from '@angular/material/menu';
 import { MatToolbarModule} from '@angular/material/toolbar';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule} from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule} from '@angular/material/icon';
+import { MatDialogModule} from '@angular/material/dialog';
+import { EditJobComponent } from './screen/job/edit-job/edit-job.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import {MatIconModule} from '@angular/material/icon';
     DepartamentComponent,
     EmployeeComponent,
     JobhistoryComponent,
-    HeaderComponent
+    HeaderComponent,
+    EditJobComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatCardModule,
     MatPaginatorModule,
     MatSortModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
