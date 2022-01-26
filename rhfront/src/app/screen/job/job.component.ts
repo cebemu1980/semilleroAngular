@@ -72,7 +72,7 @@ export class JobComponent implements OnInit, AfterViewInit {
     alert("Se eliminaran los datos");
     console.log("Remove jobs",object);
     this.serviceJob.deleteById(object).subscribe(removeJob => this.dataSource.data = removeJob);
-    this.listarJobs();
+    this.listarJobs()
   };
 
   

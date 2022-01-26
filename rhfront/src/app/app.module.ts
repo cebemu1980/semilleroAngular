@@ -28,6 +28,11 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule} from '@angular/material/icon';
 import { MatDialogModule} from '@angular/material/dialog';
 import { EditJobComponent } from './screen/job/edit-job/edit-job.component';
+import { EditregionComponent } from './screen/region/editregion/editregion.component';
+import { EditCountryComponent } from './screen/country/edit-country/edit-country.component';
+import { EditDepartamentComponent } from './screen/departament/edit-departament/edit-departament.component';
+import { EditEmployeeComponent } from './screen/employee/edit-employee/edit-employee.component';
+import { EditLocationComponent } from './screen/location/edit-location/edit-location.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +46,12 @@ import { EditJobComponent } from './screen/job/edit-job/edit-job.component';
     EmployeeComponent,
     JobhistoryComponent,
     HeaderComponent,
-    EditJobComponent
+    EditJobComponent,
+    EditregionComponent,
+    EditCountryComponent,
+    EditDepartamentComponent,
+    EditEmployeeComponent,
+    EditLocationComponent
   ],
   imports: [
     BrowserModule,
