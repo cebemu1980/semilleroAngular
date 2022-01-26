@@ -1,11 +1,14 @@
 <mat-toolbar color="Black">
-    <span>Recursos Humanos</span>
-    <a routerLink="/login" routerLinkActive="active"><button mat-button color="Black">Login</button></a>
-    <a routerLink="/job" routerLinkActive="active"><button mat-button color="Black">Cargos</button></a>
-    <a routerLink="/country" routerLinkActive="active"><button mat-button color="Black">Pais</button></a>
-    <a routerLink="/departament" routerLinkActive="active"><button mat-button color="Black">Departamento funcional</button></a>
-    <a routerLink="/employee" routerLinkActive="active"><button mat-button color="Black">Empleados</button></a>
-    <a routerLink="/jobhistory" routerLinkActive="active"><button mat-button color="Black">Historial</button></a>
-    <a routerLink="/location" routerLinkActive="active"><button mat-button color="Black">Ubicacion</button></a>
-    <a routerLink="/region" routerLinkActive="active"><button mat-button color="Black">Región</button></a>
+    <button mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
+    <h1 mat-dialog-title>Recursos Humanos</h1>
+    <mat-menu #menu="matMenu">
+        <a routerLink="/login" routerLinkActive="active"><button mat-menu-item color="Black">Login</button></a>
+        <a routerLink="/job" routerLinkActive="active"><button mat-menu-item color="Black">Cargos</button></a>
+        <a routerLink="/country" routerLinkActive="active"><button mat-menu-item color="Black">Pais</button></a>
+        <a routerLink="/departament" routerLinkActive="active"><button mat-menu-item color="Black">Departamento funcional</button></a>
+        <a routerLink="/employee" routerLinkActive="active"><button mat-menu-item color="Black">Empleados</button></a>
+        <a routerLink="/jobhistory" routerLinkActive="active"><button mat-menu-item color="Black">Historial</button></a>
+        <a routerLink="/location" routerLinkActive="active"><button mat-menu-item color="Black">Ubicacion</button></a>
+        <a routerLink="/region" routerLinkActive="active"><button mat-menu-item color="Black">Región</button></a>
+    </mat-menu>
 </mat-toolbar>

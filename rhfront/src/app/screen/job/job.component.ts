@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
@@ -24,12 +24,14 @@ export class JobComponent implements OnInit, AfterViewInit {
  
    @ViewChild(MatPaginator) 'paginator': MatPaginator;
    @ViewChild(MatSort) 'sort': MatSort;
+   teachDS: any;
  
    
   constructor(
     private serviceJob:JobService,
     private formBuilder: FormBuilder,
-    public dialogJob: MatDialog
+    public dialogJob: MatDialog,
+    private changDetecRef: ChangeDetectorRef
   ) { }
 
   /**
@@ -49,13 +51,14 @@ export class JobComponent implements OnInit, AfterViewInit {
 
   listarJobs():void{
     this.serviceJob.listJobs().subscribe(lisJobs => this.dataSource.data = lisJobs);
+    
     //this.serviceJob.listJobs().subscribe(res => console.log('POSTS',res));//prueba por consola
   }
 
   openAddJob(){
     const dialogRest = this.dialogJob.open(EditJobComponent);
     dialogRest.afterClosed().subscribe(result=>{
-
+      this.changDetecRef.detectChanges();
     });
   };
 

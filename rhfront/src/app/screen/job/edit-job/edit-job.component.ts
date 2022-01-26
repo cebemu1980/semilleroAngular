@@ -1,7 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { JobService } from '../../../services/job/job.service';
 import { FormBuilder, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-job',
@@ -13,12 +13,18 @@ export class EditJobComponent implements OnInit {
   constructor(
     private serviceJob:JobService,
     private formBuilder: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public inData: any
+    @Inject(MAT_DIALOG_DATA) public inData: any,
+    private dialogoRef: MatDialogRef<EditJobComponent>,
+    private changeDetecRef: ChangeDetectorRef
+
   ) {
     console.log("tomo los datos de la tabla",inData);
     if(inData != null){
       this.jobForm.setValue(inData.object);
-    }    
+
+    }
+    dialogoRef.disableClose=true 
+
    }
 
   ngOnInit(): void {
@@ -37,8 +43,14 @@ export class EditJobComponent implements OnInit {
     ){
       alert("Los campos son obligatorios");
     }else{
-      this.serviceJob.createOrUpdate(form).subscribe((data)=>{});    
+      this.serviceJob.createOrUpdate(form).subscribe((data)=>{}); 
+      this.changeDetecRef.detectChanges();
+      this.dialogoRef.close();   
     }    
   } 
+
+  onNoClick(): void {
+    this.dialogoRef.close();
+  }
 
 }
