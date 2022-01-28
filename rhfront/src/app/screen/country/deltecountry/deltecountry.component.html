@@ -1,7 +1,7 @@
 <mat-card>
     <div>
-        <h1 mat-dialog-title>Formulario de País</h1>
-        <form [formGroup]="countryForm" (ngSubmit)="onCountry(countryForm.value)">
+        <h1 mat-dialog-title style="background-color:#eff1f3">Se eliminarán los siguientes datos de País</h1>
+        <form [formGroup]="countryForm" (ngSubmit)="deleteCountry(countryForm.value)">
             <div class="example-container">
                 <mat-form-field hintLabel="Max 2 characters">
                     <mat-label>Identificador Country</mat-label>
@@ -10,19 +10,19 @@
 
                 <mat-form-field hintLabel="Max 40 characters">
                     <mat-label>Nombre</mat-label>
-                    <input type="text" matInput #input formControlName="country_name" maxlength="40" autocomplete="off">
+                    <input type="text" matInput #input formControlName="country_name" maxlength="40" autocomplete="off" [formControl]="cona">
                 </mat-form-field>
 
                 <mat-form-field appearance="fill">
                     <mat-label>Region</mat-label>
-                    <mat-select formControlName="region_id" name="item">
+                    <mat-select formControlName="region_id" name="item" [formControl]="core">
                         <mat-option *ngFor="let item of lista_region" [value]="item.region_id">
                             {{item.region_name}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-            <button type="submit" [disabled]="countryForm.invalid" mat-raised-button color="primary" title="Agregar">Agregar</button>
+            <button type="submit" mat-raised-button color="primary" title="Eliminar">Eliminar</button>
         </form>
         <div mat-dialog-actions>
             <button mat-button (click)="onNoClick()" title="Cerrar ventana">Cerrar</button>

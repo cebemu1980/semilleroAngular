@@ -1,7 +1,7 @@
 <mat-card>
     <div>
-        <h1 mat-dialog-title>Formulario de Cargos</h1>
-        <form [formGroup]="jobForm" (ngSubmit)="onJobs(jobForm.value)">
+        <h1 mat-dialog-title style="background-color:#eff1f3">Se eliminarán los siguientes datos de Cargos</h1>
+        <form [formGroup]="jobForm" (ngSubmit)="deleteJobs(jobForm.value)">
             <div class="example-container">
                 <mat-form-field hintLabel="Max 10 characters">
                     <mat-label>Identificador</mat-label>
@@ -10,20 +10,20 @@
 
                 <mat-form-field hintLabel="Max 35 characters">
                     <mat-label>Titulo</mat-label>
-                    <input type="text" matInput #input formControlName="job_title" maxlength="35" autocomplete="off">
+                    <input type="text" matInput #input formControlName="job_title" maxlength="35" autocomplete="off" [formControl]="joti">
                 </mat-form-field>
 
                 <mat-form-field hintLabel="Max 20 characters">
                     <mat-label>Salario mínimo</mat-label>
-                    <input type="number" matInput #input formControlName="min_salary" maxlength="20" autocomplete="off">
+                    <input type="number" matInput #input formControlName="min_salary" maxlength="20" autocomplete="off" [formControl]="jomin">
                 </mat-form-field>
 
                 <mat-form-field hintLabel="Max 20 characters">
                     <mat-label>Salario máximo</mat-label>
-                    <input type="number" matInput #input formControlName="max_salary" maxlength="20" autocomplete="off">
+                    <input type="number" matInput #input formControlName="max_salary" maxlength="20" autocomplete="off" [formControl]="jomax">
                 </mat-form-field>
             </div>
-            <button type="submit" [disabled]="jobForm.invalid" mat-raised-button color="primary" title="Agregar">Agregar</button>
+            <button type="submit" mat-raised-button color="primary" title="Eliminar">Eliminar</button>
         </form>
         <div mat-dialog-actions>
             <button mat-button (click)="onNoClick()" title="Cerrar ventana">Cerrar</button>

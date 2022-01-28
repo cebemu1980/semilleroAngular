@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
 import { CountryService } from '../../services/country/country.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EditCountryComponent } from './edit-country/edit-country.component';
 import { CountryInterface } from 'src/app/models/country.interface';
+import { DeltecountryComponent } from './deltecountry/deltecountry.component';
 
 
 @Component({
@@ -14,7 +14,7 @@ import { CountryInterface } from 'src/app/models/country.interface';
   styleUrls: ['./country.component.css']
 })
 export class CountryComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['job_id', 'job_title', 'min_salary', 'max_salary', 'actions'];
+  displayedColumns: string[] = ['country_id', 'country_name', 'region_id', 'actions'];
   dataSource = new MatTableDataSource(); 
   @ViewChild(MatPaginator) 'paginator': MatPaginator;
 
@@ -24,18 +24,31 @@ export class CountryComponent implements OnInit, AfterViewInit {
   ) { }
  
   ngOnInit(): void {
+    this.listarCountry();
   }
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
-  listarJobs():void{}
-  openAddJob(){
+  listarCountry():void{
+    this.countryService.listCo().subscribe(list=> this.dataSource.data = list)
+  }
+  openAddCountry(){
     const dialogRest = this.dialogJob.open(EditCountryComponent);
     dialogRest.afterClosed().subscribe(result=>{
       
     });
   }
-  openEditJob(object:CountryInterface){}
-  removeJob(object:CountryInterface):void{}
+  openEditCountry(object:CountryInterface){
+    const dialogRest = this.dialogJob.open(EditCountryComponent, {
+      data: {object}
+    });  
+     dialogRest.afterClosed().subscribe(result=>{});
+  }
+  removeCountry(object:CountryInterface):void{
+    const dialogRest = this.dialogJob.open(DeltecountryComponent, {
+      data: {object}
+    });  
+     dialogRest.afterClosed().subscribe(result=>{});
+  }
 }
 

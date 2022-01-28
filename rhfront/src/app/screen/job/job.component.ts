@@ -7,6 +7,7 @@ import { MatSort } from '@angular/material/sort';
 import { JobInterface } from 'src/app/models/job.interface';
 import {EditJobComponent} from './edit-job/edit-job.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DeletejobComponent } from './deletejob/deletejob.component';
 
 
 @Component({
@@ -69,9 +70,11 @@ export class JobComponent implements OnInit, AfterViewInit {
    dialogRest.afterClosed().subscribe(result=>{});
   };
   removeJob(object:JobInterface):void{
-    alert("Se eliminaran los datos");
-    console.log("Remove jobs",object);
-    this.serviceJob.deleteById(object).subscribe(removeJob => this.dataSource.data = removeJob);
+    const dialogRest = this.dialogJob.open(DeletejobComponent, {
+      data: {object}
+    });  
+     dialogRest.afterClosed().subscribe(result=>{});
+    //this.serviceJob.deleteById(object).subscribe(removeJob => this.dataSource.data = removeJob);
     this.listarJobs()
   };
 

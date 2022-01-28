@@ -33,6 +33,10 @@ import { EditCountryComponent } from './screen/country/edit-country/edit-country
 import { EditDepartamentComponent } from './screen/departament/edit-departament/edit-departament.component';
 import { EditEmployeeComponent } from './screen/employee/edit-employee/edit-employee.component';
 import { EditLocationComponent } from './screen/location/edit-location/edit-location.component';
+import { DeleteregionComponent } from './screen/region/deleteregion/deleteregion.component';
+import { DeletejobComponent } from './screen/job/deletejob/deletejob.component';
+import { MatSelectModule} from '@angular/material/select';
+import { DeltecountryComponent } from './screen/country/deltecountry/deltecountry.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +55,10 @@ import { EditLocationComponent } from './screen/location/edit-location/edit-loca
     EditCountryComponent,
     EditDepartamentComponent,
     EditEmployeeComponent,
-    EditLocationComponent
+    EditLocationComponent,
+    DeleteregionComponent,
+    DeletejobComponent,
+    DeltecountryComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +77,8 @@ import { EditLocationComponent } from './screen/location/edit-location/edit-loca
     MatPaginatorModule,
     MatSortModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

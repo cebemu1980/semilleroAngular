@@ -1,26 +1,31 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { CountryService } from '../../../services/country/country.service';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormControl, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CountryService } from '../../../services/country/country.service';
 
 @Component({
-  selector: 'app-edit-country',
-  templateUrl: './edit-country.component.html',
-  styleUrls: ['./edit-country.component.css']
+  selector: 'app-deltecountry',
+  templateUrl: './deltecountry.component.html',
+  styleUrls: ['./deltecountry.component.css']
 })
-export class EditCountryComponent implements OnInit {
+export class DeltecountryComponent implements OnInit {
   coid = new FormControl({disable:true});
+  cona = new FormControl({disable:true});
+  core = new FormControl({disable:true});
   lista_region :any[]=[];
+
   constructor(
     private countryService: CountryService,
     private formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public inData: any,
-    private dialogoRef: MatDialogRef<EditCountryComponent>
+    private dialogoRef: MatDialogRef<DeltecountryComponent>
   ) {
     console.log("tomo los datos de la tabla",inData);
     if(inData != null){
       this.countryForm.setValue(inData.object);
       this.coid.disable();
+      this.cona.disable();
+      this.core.disable();
     }
     dialogoRef.disableClose=true
    }
@@ -33,15 +38,10 @@ export class EditCountryComponent implements OnInit {
     country_name:['',Validators.required],
     region_id:['',Validators.required]
   });
-  onCountry(form:any): void{
-    if(
-      form.country_id === "" || form.country_name === "" || form.region_id === ""
-    ){
-      alert("Los campos son obligatorios");
-    }else{
-      this.countryService.createOrUpdate(form).subscribe((data)=>{}); 
+  deleteCountry(form:any): void{
+    console.log("datos a eliminar"+form);
+      this.countryService.deleteCo(form).subscribe((data)=>{}); 
       this.dialogoRef.close();   
-    }    
   } 
   listRegion(){
     this.countryService.listRegion().subscribe((result)=>{
