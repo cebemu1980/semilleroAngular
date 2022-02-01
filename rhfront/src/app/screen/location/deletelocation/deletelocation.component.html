@@ -1,7 +1,7 @@
 <mat-card>
     <div>
-        <h1 mat-dialog-title>Formulario de Ubicación</h1>
-        <form [formGroup]="locationForm" (ngSubmit)="onLocation(locationForm.value)">
+        <h1 mat-dialog-title style="background-color:#eff1f3">Se eliminarán los siguientes datos de Ubicación</h1>
+        <form [formGroup]="locationForm" (ngSubmit)="deleteLocation(locationForm.value)">
             <div class="example-container">
                 <mat-form-field hintLabel="Max 10 characters">
                     <mat-label>Identificador</mat-label>
@@ -10,27 +10,27 @@
 
                 <mat-form-field hintLabel="Max 40 characters">
                     <mat-label>Dirección</mat-label>
-                    <input matInput #input formControlName="street_address" maxlength="40" autocomplete="off">
+                    <input matInput #input formControlName="street_address" maxlength="40" autocomplete="off" [formControl]="lostreet">
                 </mat-form-field>
 
                 <mat-form-field hintLabel="Max 12 characters">
                     <mat-label>Código postal</mat-label>
-                    <input matInput #input formControlName="postal_code" maxlength="12" autocomplete="off">
+                    <input matInput #input formControlName="postal_code" maxlength="12" autocomplete="off" [formControl]="lopostal">
                 </mat-form-field>
 
                 <mat-form-field hintLabel="Max 30 characters">
                     <mat-label>Ciudad</mat-label>
-                    <input matInput #input formControlName="city" maxlength="30" autocomplete="off">
+                    <input matInput #input formControlName="city" maxlength="30" autocomplete="off" [formControl]="locity">
                 </mat-form-field>
 
                 <mat-form-field hintLabel="Max 25 characters">
                     <mat-label>Departamento</mat-label>
-                    <input matInput #input formControlName="state_province" maxlength="25" autocomplete="off">
+                    <input matInput #input formControlName="state_province" maxlength="25" autocomplete="off" [formControl]="lostate">
                 </mat-form-field>
 
                 <mat-form-field appearance="fill">
                     <mat-label>Region</mat-label>
-                    <mat-select formControlName="country_id" name="item">
+                    <mat-select formControlName="country_id" name="item" [formControl]="locountry">
                         <mat-option *ngFor="let item of lista_country" [value]="item.country_id">
                             {{item.country_name}}
                         </mat-option>
@@ -38,7 +38,7 @@
                 </mat-form-field>
 
             </div>
-            <button type="submit" [disabled]="locationForm.invalid" mat-raised-button color="primary" title="Agregar">Agregar</button>
+            <button type="submit" mat-raised-button color="primary" title="Eliminar">Eliminar</button>
         </form>
         <div mat-dialog-actions>
             <button mat-button (click)="onNoClick()" title="Cerrar ventana">Cerrar</button>

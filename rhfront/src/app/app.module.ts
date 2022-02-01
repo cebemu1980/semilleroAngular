@@ -37,6 +37,9 @@ import { DeleteregionComponent } from './screen/region/deleteregion/deleteregion
 import { DeletejobComponent } from './screen/job/deletejob/deletejob.component';
 import { MatSelectModule} from '@angular/material/select';
 import { DeltecountryComponent } from './screen/country/deltecountry/deltecountry.component';
+import { DeletelocationComponent } from './screen/location/deletelocation/deletelocation.component';
+import { DeletedepartamentComponent } from './screen/departament/deletedepartament/deletedepartament.component';
+import { DeletemployeeComponent } from './screen/employee/deletemployee/deletemployee.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +61,10 @@ import { DeltecountryComponent } from './screen/country/deltecountry/deltecountr
     EditLocationComponent,
     DeleteregionComponent,
     DeletejobComponent,
-    DeltecountryComponent
+    DeltecountryComponent,
+    DeletelocationComponent,
+    DeletedepartamentComponent,
+    DeletemployeeComponent
   ],
   imports: [
     BrowserModule,
